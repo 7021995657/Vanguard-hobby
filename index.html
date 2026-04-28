@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VanguardHobbies | Official Inventory</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #080808; color: #ffffff; }
+        .product-card { background: #111111; border: 1px solid #222; transition: 0.3s; height: 100%; display: flex; flex-direction: column; }
+        .product-card:hover { border-color: #fbbf24; transform: translateY(-5px); }
+        .wa-btn { background-color: #25D366; color: white; font-weight: 800; text-align: center; padding: 12px; border-radius: 10px; display: block; }
+        .price-tag { color: #fbbf24; font-size: 1.5rem; font-weight: 900; }
+        img { height: 200px; width: 100%; object-fit: contain; background: white; border-radius: 12px; padding: 8px; }
+    </style>
+</head>
+<body>
+
+    <nav class="bg-black border-b-2 border-yellow-500 p-5 sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-3xl font-black italic uppercase">VANGUARD<span class="text-yellow-500">HOBBIES</span></h1>
+            <a href="https://wa.me/917021995657" class="bg-yellow-500 text-black px-6 py-2 rounded-full font-bold text-xs uppercase">Contact: 7021995657</a>
+        </div>
+    </nav>
+
+    <main class="container mx-auto py-12 px-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="product-grid">
+            </div>
+    </main>
+
+    <script>
+        const inventory = [
+            { name: "FMS Atlas 1/10", price: "31,999", file: "1.jpg" },
+            { name: "WL Toys 104020", price: "31,999", file: "2.jpg" },
+            { name: "MNRC MN82", price: "8,499", file: "3.jpg" },
+            { name: "MNRC MN82S", price: "8,999", file: "4.jpg" },
+            { name: "MNRC MN82 Pro", price: "8,999", file: "5.jpg" },
+            { name: "JJRC C8815", price: "6,999", file: "6.jpg" },
+            { name: "MJX 14303", price: "16,499", file: "7.jpg" },
+            { name: "MJX 14302", price: "16,299", file: "8.jpg" },
+            { name: "MJX 14304", price: "15,999", file: "9.jpg" },
+            { name: "MJX H12P", price: "22,499", file: "10.jpg" },
+            { name: "FMS FCX18 LC80", price: "20,999", file: "11.jpg" },
+            { name: "FMS FCX24 K5 Blazer", price: "18,999", file: "12.jpg" }
+        ];
+
+        const grid = document.getElementById('product-grid');
+        inventory.forEach(car => {
+            grid.innerHTML += `
+                <div class="product-card p-5 rounded-3xl">
+                    <img src="images/${car.file}" alt="${car.name}" onerror="this.src='https://placehold.co/400x300?text=Upload+to+Images+Folder'">
+                    <h3 class="font-black uppercase mt-4 text-lg">${car.name}</h3>
+                    <p class="price-tag mt-2 mb-4">₹${car.price}</p>
+                    <a href="https://wa.me/917021995657?text=I%20want%20to%20order%20the%20${encodeURIComponent(car.name)}" class="wa-btn">Order on WhatsApp</a>
+                </div>
+            `;
+        });
+    </script>
+</body>
+</html>
